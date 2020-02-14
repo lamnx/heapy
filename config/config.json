@@ -1,0 +1,14 @@
+{
+  "env": "development",
+  "hostWeb": "0.0.0.0",
+  "portWeb": 3002,
+  "db": {
+    "driver": "pg",
+    "user": "postgres",
+    "pass": "7XHEh7vvUFXc3Csj",
+    "host": "127.0.0.1",
+    "port": 6545,
+    "name": "heapy",
+    "schema": "public"
+  }
+}

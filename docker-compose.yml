@@ -1,0 +1,46 @@
+version: "3.5"
+
+services:
+  heapy:
+    image: $IMAGE_NAME
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: "$CONTAINER_NAME"
+    restart: always
+    networks:
+      - stuff
+    volumes:
+      - heapy-logs:/app/logs
+    ports:
+      - $HOST_PORT:3002
+    environment:
+      - "OVERRIDES_CONFIG_BASE64=$OVERRIDES_CONFIG_BASE64"
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:11.5-alpine
+    container_name: "$CONTAINER_NAME-postgres"
+    ports:
+      - 6545:5432
+    restart: always
+    networks:
+      - stuff
+    volumes:
+#      - "./$CONTAINER_NAME.db_init:/docker-entrypoint-initdb.d/"
+      - postgres-data:/var/lib/postgresql/data
+      - /opt/backup:/backup
+    environment:
+      - "POSTGRES_PASSWORD=$POSTGRES_PASSWORD"
+      - "POSTGRES_DB=app"
+
+volumes:
+  postgres-data:
+    name: $CONTAINER_NAME-postgres-data
+  heapy-logs:
+    name: $CONTAINER_NAME-logs
+
+networks:
+  stuff:
+    name: "$CONTAINER_NAME"
+    driver: bridge

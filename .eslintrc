@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "airbnb",
+    "plugin:jest/recommended"
+  ],
+  "plugins": ["jest"],
+  "env": {
+    "jest/globals": true,
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "indent": ["error", 4],
+    "no-multiple-empty-lines": 0,
+    "one-var": 0,
+    "global-require": 0,
+    "handle-callback-err": 1,
+    "no-new-require": 2,
+    "keyword-spacing": ["error", { "before": true, "after": true }],
+    "comma-dangle": 0,
+    "import/no-extraneous-dependencies": 0,
+    "padded-blocks": 0,
+    "import/no-dynamic-require": 0,
+    "arrow-parens": 0,
+    "import/order": 0
+  }
+}

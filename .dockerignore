@@ -1,0 +1,6 @@
+npm-debug
+Dockerfile
+.dockerignore
+.gitignore
+.gitlab-ci.yml
+.git

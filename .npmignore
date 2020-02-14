@@ -1,0 +1,4 @@
+*.tgz
+makeApp
+.npmignore
+.gitignore
