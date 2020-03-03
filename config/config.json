@@ -10,5 +10,19 @@
     "port": 6545,
     "name": "heapy",
     "schema": "public"
+  },
+  "printDocsFlag": true,
+  "logs": {
+    "common": {
+      "level": "info",
+      "console": true,
+      "file": {
+        "filename": "./logs/app.log"
+      }
+    },
+    "router": {
+      "level": "info",
+      "file": ""
+    }
   }
 }

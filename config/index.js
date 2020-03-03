@@ -1,4 +1,3 @@
-const
-    Config = require('../utils/config/index');
+const Config = require('../utils/config');
 
-module.exports = new Config('./config.json');
+module.exports = new Config('/config/config.json');

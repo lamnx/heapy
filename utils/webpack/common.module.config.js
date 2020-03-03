@@ -1,16 +1,12 @@
 const params = {
     rules: [
         {
-            test: /pdf\.worker(\.min)?\.js$/,
-            use: 'raw-loader',
-        },
-        {
             test: [/\.(js|jsx)$/],
-            exclude: /(node_modules\/(?!@techincity\/ui-kit)|bower_components|pdf\.worker(\.min)?\.js$)/,
+            exclude: /(node_modules|bower_components|pdf\.worker(\.min)?\.js$)/,
             loader: 'babel-loader',
             options: {
-                presets: ['env'],
-                plugins: ['transform-class-properties', 'transform-object-rest-spread']
+                presets: ['@babel/env'],
+                plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-proposal-object-rest-spread']
             }
         },
         {
