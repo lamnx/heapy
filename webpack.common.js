@@ -7,6 +7,6 @@ module.exports = {
         filename: 'js/bundle.js',
         path: path.resolve(__dirname, 'public'),
         libraryTarget: 'var',
-        library: 'Library'
+        library: 'Heapy'
     }
 };
