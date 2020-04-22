@@ -1,0 +1,29 @@
+{
+  "env": "development",
+  "hostWeb": "0.0.0.0",
+  "portWeb": 3002,
+  "db": {
+    "driver": "pg",
+    "user": "postgres",
+    "password": "7XHEh7vvUFXc3Csj",
+    "host": "127.0.0.1",
+    "port": 6547,
+    "database": "heapy",
+    "schema": "public"
+  },
+  "printDocsFlag": true,
+  "autoMigrateOnStart": true,
+  "logs": {
+    "common": {
+      "level": "info",
+      "console": true,
+      "file": {
+        "filename": "./logs/app.log"
+      }
+    },
+    "router": {
+      "level": "info",
+      "file": ""
+    }
+  }
+}

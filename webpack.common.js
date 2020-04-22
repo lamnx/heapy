@@ -1,5 +1,5 @@
 const path = require('path'),
-    moduleCommon = require('./utils/webpack/common.module.config');
+    moduleCommon = require('./app/utils/webpack/common.module.config');
 
 module.exports = {
     module: moduleCommon,

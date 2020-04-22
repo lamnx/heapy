@@ -1,0 +1,114 @@
+openapi: 3.0.1
+info:
+  title: Heapy API
+  description: Спецификация API системы Heapy
+  version: 3.0.0
+servers:
+  - url: /api/v0
+tags:
+  - name: user
+    description: Пользователь
+
+paths:
+  /userlist:
+    get:
+      security:
+        - token: []
+      tags:
+        - user
+      operationId: usersGET
+      description: Возвращает список всех пользователей
+      responses:
+        200:
+          description: Operation Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+                    password:
+                      type: string
+                    email:
+                      type: string
+                    isActive:
+                      type: boolean
+                    roleId:
+                      type: string
+                      format: uuid
+                      nullable: true
+        400:
+          $ref: '#/components/responses/BadParams'
+        403:
+          $ref: '#/components/responses/AccessDenied'
+        default:
+          $ref: '#/components/responses/Default'
+      x-swagger-router-controller: user
+
+# Components
+components:
+  securitySchemes:
+    token:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    ExtendedError:
+      type: object
+      properties:
+        error:
+          type: boolean
+          description: Факт наличия ошибки
+          example: true
+        message:
+          type: string
+          description: Сообщение для пользователя или служебное сообщение
+          example: Невозможно отказать в выдаче разрешения без указания причины
+        code:
+          description: Уникальный идентификатор ошибки бизнес логики
+          example: REJECT_OPERATION_ERROR_NO_REASON
+        info:
+          type: object
+          properties: {}
+          description: Необязательный объект с произвольной информацией об ошибке
+          example:
+            someInfo: 25
+  responses:
+    Default:
+      description: Unknown error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExtendedError'
+    BadParams:
+      description: Bad params
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExtendedError'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExtendedError'
+    NotAcceptable:
+      description: Specified parameters are not accepatable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExtendedError'
+    AccessDenied:
+      description: No access to specified resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ExtendedError'
+
+security:
+  - token: []
